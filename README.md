@@ -11,7 +11,7 @@
   </p>
 
   <p>
-    <b>LECTURER:</b> MOHD KHAIRUL AZMI BIN HASSANbr>
+    <b>LECTURER:</b> MOHD KHAIRUL AZMI BIN HASSAN
   </p>
   <b>PREPARED BY:</b>
 
