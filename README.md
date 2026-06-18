@@ -25,22 +25,22 @@
   <tr>
     <td>Abdallah Bouher</td>
     <td>2222025</td>
-    <td></td>
+    <td>Feature 5</td>
   </tr>
   <tr>
     <td>Nasution Wahyu Abdillah</td>
     <td>2215447</td>
-    <td></td>
+    <td>Feature 4</td>
   </tr>
   <tr>
     <td>Muhammad Firdaus Bin Zaini</td>
     <td>2217753</td>
-    <td></td>
+    <td>feature 1,3</td>
   </tr>
   <tr>
     <td>Saifullah Muhammad Hafizh</td>
     <td>2225505</td>
-    <td></td>
+    <td>Feature 2</td>
   </tr>
 </table>
 
