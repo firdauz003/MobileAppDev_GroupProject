@@ -78,3 +78,29 @@ This application addresses the everyday challenge of balancing religious duties 
 5. **"What's in my Fridge?" Meal Finder (Cloud Firestore)**
     * A practical form utilizing checkboxes and user inputs where users select ingredients they currently have.
     * Upon submission, the app performs a Read operation from Firebase Cloud Firestore to fetch and display matching, healthy recipe cards.
+  
+  ## 5. UI and Mock-up
+
+  ## 6. Technical Design 
+  The application will be built using Flutter as the primary framework, ensuring cross platform compatibility for Android and iOS.
+
+  **Widget Structure:**
+  
+      **Authentication Module:** Login and registration screens using textformField, ElevatedButton, and Firebase Auth Integration.
+      
+      **Dashboard:** Listview with Card widgets displaying prayer times, hydration progress, and motivational quoetes.
+      
+       **Prayer Times & Qibla Compass:** External packages (adhan, flutter_compass) intergrated into custom widgets for accurate calculations.
+
+       **Hydration Tracker:** A CounsumerWidget and Changenotifierprovider to manage state updates in real time.
+
+          **Meal Finder:** A form widget with checkboxes and text input, connected to Firestore queries
+
+   **State Management Approach:** 
+
+     **Riverpod** is choosen for its scalability and clean architecture. It allows reactive updates across multiple modules without excessive boilerplate.
+
+**Backend Services:** 
+
+     **Firebase Authentication** for secure login.
+     **Cloud Firestore** for storing recipes and user hydration logs.
