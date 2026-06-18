@@ -46,7 +46,7 @@ class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
     const MainDashboardPlaceholder(), // Feature 2 (Team Task)
     const PrayerQiblaScreen(), // Feature 3 (Your Task)
     const HydrationScreen(), // Feature 4 (Team Task)
-    const MealFinderPlaceholder(), // Feature 5 (Team Task)
+    const MealFinderScreen(), // Feature 5 (Team Task)
   ];
 
   // 2. Titles displayed dynamically on the central AppBar wrapper
