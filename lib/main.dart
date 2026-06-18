@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/auth_profile_screen.dart';
 import 'features/prayer_qibla_screen.dart';
 import 'features/hydration_screen.dart';
-//import 'features/dashboard_screen.dart';
+import 'features/dashboard_screen.dart';
 import 'features/meal_finder_screen.dart';
 
 void main() {
@@ -43,7 +43,7 @@ class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
   // 1. Array containing your working features + clear placeholder layouts for team members
   final List<Widget> _screens = [
     const AuthProfileScreen(), // Feature 1 (Your Task)
-    const MainDashboardPlaceholder(), // Feature 2 (Team Task)
+    const MainDashboardScreen(), // Feature 2 (Team Task)
     const PrayerQiblaScreen(), // Feature 3 (Your Task)
     const HydrationScreen(), // Feature 4 (Team Task)
     const MealFinderScreen(), // Feature 5 (Team Task)
