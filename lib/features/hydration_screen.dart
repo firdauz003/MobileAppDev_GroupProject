@@ -1,54 +1,94 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HydrationTrackerPlaceholder extends StatelessWidget {
-  const HydrationTrackerPlaceholder({Key? key}) : super(key: key);
+final hydrationProvider = StateProvider<int>((ref) => 0);
+
+class HydrationScreen extends ConsumerWidget {
+  const HydrationScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return _buildPlaceholderLayout(
-      title: 'This is Hydration Tracker Screen',
-      description: 'Feature 4 Scope:\n- Interactive custom state management engine (Provider/Riverpod).\n- Dynamic increment/decrement counters mimicking water cups log tracking.\n- Reactive tracking progress bar component tracking completion.',
-      icon: Icons.local_drink,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(hydrationProvider);
+    const dailyGoal = 8;
+    final progressValue = (count / dailyGoal).clamp(0.0, 1.0);
+
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.local_drink, size: 80, color: Colors.teal),
+            const SizedBox(height: 20),
+            Text(
+              'Hydration Tracker',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'You drank $count glasses today',
+              style: const TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 10),
+            LinearProgressIndicator(
+              value: progressValue,
+              minHeight: 12,
+              backgroundColor: Colors.grey.shade300,
+              color: Colors.teal,
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    ref.read(hydrationProvider.notifier).state++;
+                    _saveHydrationLog(ref.read(hydrationProvider));
+                  },
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add Glass'),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                ),
+                const SizedBox(width: 20),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    if (count > 0) {
+                      ref.read(hydrationProvider.notifier).state--;
+                      _saveHydrationLog(ref.read(hydrationProvider));
+                    }
+                  },
+                  icon: const Icon(Icons.remove),
+                  label: const Text('Remove Glass'),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
-}
-// Clean helper widget to standardize the appearance of placeholder content
-Widget _buildPlaceholderLayout({
-  required String title,
-  required String description,
-  required IconData icon,
-}) {
-  return Padding(
-    padding: const EdgeInsets.all(32.0),
-    child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 70, color: Colors.grey.shade400),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey.shade800,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Card(
-          color: Colors.amber.shade50,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              description,
-              style: TextStyle(fontSize: 13, height: 1.5, color: Colors.amber.shade900),
-            ),
-          ),
-        ),
-      ],
-    ),
-  )
-  );
+
+  Future<void> _saveHydrationLog(int count) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final today = DateTime.now();
+      final dateKey = '${today.year}-${today.month}-${today.day}';
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection('hydration_log')
+          .doc(dateKey)
+          .set({
+        'glasses': count,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+    }
+  }
 }

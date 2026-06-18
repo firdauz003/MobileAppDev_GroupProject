@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/auth_profile_screen.dart';
 import 'features/prayer_qibla_screen.dart';
-import 'features/dashboard_screen.dart';
 import 'features/hydration_screen.dart';
-import 'features/meal_finder_screen.dart';
+//import 'features/dashboard_screen.dart';
+//import 'features/meal_finder_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MizanApp());
+  runApp(const ProviderScope(child: MizanApp()));
 }
 
 class MizanApp extends StatelessWidget {
@@ -44,7 +45,7 @@ class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
     const AuthProfileScreen(), // Feature 1 (Your Task)
     const MainDashboardPlaceholder(), // Feature 2 (Team Task)
     const PrayerQiblaScreen(), // Feature 3 (Your Task)
-    const HydrationTrackerPlaceholder(), // Feature 4 (Team Task)
+    const HydrationScreen(), // Feature 4 (Team Task)
     const MealFinderPlaceholder(), // Feature 5 (Team Task)
   ];
 
@@ -118,38 +119,89 @@ class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
 // PLACEHOLDER SCREENS FOR YOUR TEAM MODULES
 // ==========================================
 
+class MainDashboardPlaceholder extends StatelessWidget {
+  const MainDashboardPlaceholder({Key? key}) : super(key: key);
 
-// // Clean helper widget to standardize the appearance of placeholder content
-// Widget _buildPlaceholderLayout({
-//   required String title,
-//   required String description,
-//   required IconData icon,
-// }) {
-//   return Center(
-//     padding: const EdgeInsets.all(32.0),
-//     child: Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         Icon(icon, size: 70, color: Colors.grey.shade400),
-//         const SizedBox(height: 16),
-//         Text(
-//           title,
-//           textAlign: TextAlign.center,
-//           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.slate),
-//         ),
-//         const SizedBox(height: 12),
-//         Card(
-//           color: Colors.amber.shade50,
-//           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-//           child: Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: Text(
-//               description,
-//               style: TextStyle(fontSize: 13, height: 1.5, color: Colors.amber.shade900),
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.dashboard, size: 70, color: Colors.grey.shade400),
+          const SizedBox(height: 16),
+          const Text(
+            'Daily Deen Dashboard',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            color: Colors.blue.shade50,
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text('Feature 2 - Coming Soon'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HydrationTrackerPlaceholder extends StatelessWidget {
+  const HydrationTrackerPlaceholder({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.local_drink, size: 70, color: Colors.grey.shade400),
+          const SizedBox(height: 16),
+          const Text(
+            'Hydration Tracker',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            color: Colors.cyan.shade50,
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text('Feature 4 - Coming Soon'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MealFinderPlaceholder extends StatelessWidget {
+  const MealFinderPlaceholder({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.restaurant_menu, size: 70, color: Colors.grey.shade400),
+          const SizedBox(height: 16),
+          const Text(
+            'Meal Finder',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            color: Colors.orange.shade50,
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text('Feature 5 - Coming Soon'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
