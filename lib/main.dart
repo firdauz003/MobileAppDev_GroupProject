@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'features/auth_profile_screen.dart';
 import 'features/prayer_qibla_screen.dart';
+import 'features/dashboard_screen.dart';
+import 'features/hydration_screen.dart';
+import 'features/meal_finder_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,142 +16,140 @@ class MizanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mizan Development Hub',
+      title: 'Mizan: Your Daily Deen & Health Companion',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFFF7F9F6),
       ),
-      // Directs the app straight to your dedicated navigation testing dashboard
-      home: const MainDashboard(),
+      home: const UniversalNavigationHub(),
     );
   }
 }
 
-class MainDashboard extends StatelessWidget {
-  const MainDashboard({Key? key}) : super(key: key);
+class UniversalNavigationHub extends StatefulWidget {
+  const UniversalNavigationHub({Key? key}) : super(key: key);
+
+  @override
+  State<UniversalNavigationHub> createState() => _UniversalNavigationHubState();
+}
+
+class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
+  // Keeps track of the currently selected tab
+  int _currentIndex = 0;
+
+  // 1. Array containing your working features + clear placeholder layouts for team members
+  final List<Widget> _screens = [
+    const AuthProfileScreen(), // Feature 1 (Your Task)
+    const MainDashboardPlaceholder(), // Feature 2 (Team Task)
+    const PrayerQiblaScreen(), // Feature 3 (Your Task)
+    const HydrationTrackerPlaceholder(), // Feature 4 (Team Task)
+    const MealFinderPlaceholder(), // Feature 5 (Team Task)
+  ];
+
+  // 2. Titles displayed dynamically on the central AppBar wrapper
+  final List<String> _titles = [
+    'Profile Setup (Feature 1)',
+    'Daily Deen Dashboard (Feature 2)',
+    'Prayer & Qibla (Feature 3)',
+    'Hydration Tracker (Feature 4)',
+    'Meal Finder (Feature 5)',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Mizan: My Assigned Tasks',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        title: Text(
+          _titles[_currentIndex],
+          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.teal,
         centerTitle: true,
         elevation: 2,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Icon(
-              Icons.developer_mode,
-              size: 80,
-              color: Colors.teal,
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Firdaus\'s Feature Sandbox',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
-            ),
-            const Text(
-              'Use these quick toggles to test UI layouts and component modules for final evaluation.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-            const SizedBox(height: 40),
-
-            // Navigation Card Button for Feature 3 (Compass)
-            _buildNavigationCard(
-              context,
-              title: 'Feature 3: Qibla & Prayer Times',
-              subtitle: 'Check offline Adhan tables & fluid compass bearing values.',
-              icon: Icons.explore,
-              color: Colors.teal,
-              targetScreen: const PrayerQiblaScreen(),
-            ),
-            
-            const SizedBox(height: 16),
-
-            // Navigation Card Button for Feature 1 (Auth UI)
-            _buildNavigationCard(
-              context,
-              title: 'Feature 1: Profile & Form Mock',
-              subtitle: 'Verify input field validators and goal parameter entry states.',
-              icon: Icons.account_circle,
-              color: Colors.teal.shade700,
-              targetScreen: const AuthProfileScreen(),
-            ),
-          ],
-        ),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
       ),
-    );
-  }
-
-  Widget _buildNavigationCard(
-    BuildContext context, {
-    required String title,
-    required String subtitle,
-    required IconData icon,
-    required Color color,
-    required Widget targetScreen,
-  }) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => targetScreen),
-          );
+      // 3. Universal Bottom Navigation Component Matrix
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed, // Preserves layout constraints for 4+ items
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey.shade600,
+        backgroundColor: Colors.white,
+        selectedFontSize: 12,
+        unselectedFontSize: 11,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
         },
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(icon, color: color, size: 30),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey.shade400),
-            ],
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile/Auth',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Deen Dash',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Prayer/Qibla',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_drink),
+            label: 'Hydration',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu),
+            label: 'Meal Finder',
+          ),
+        ],
       ),
     );
   }
 }
+
+// ==========================================
+// PLACEHOLDER SCREENS FOR YOUR TEAM MODULES
+// ==========================================
+
+
+// // Clean helper widget to standardize the appearance of placeholder content
+// Widget _buildPlaceholderLayout({
+//   required String title,
+//   required String description,
+//   required IconData icon,
+// }) {
+//   return Center(
+//     padding: const EdgeInsets.all(32.0),
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         Icon(icon, size: 70, color: Colors.grey.shade400),
+//         const SizedBox(height: 16),
+//         Text(
+//           title,
+//           textAlign: TextAlign.center,
+//           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.slate),
+//         ),
+//         const SizedBox(height: 12),
+//         Card(
+//           color: Colors.amber.shade50,
+//           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+//           child: Padding(
+//             padding: const EdgeInsets.all(16.0),
+//             child: Text(
+//               description,
+//               style: TextStyle(fontSize: 13, height: 1.5, color: Colors.amber.shade900),
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
