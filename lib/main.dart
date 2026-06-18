@@ -4,7 +4,7 @@ import 'features/auth_profile_screen.dart';
 import 'features/prayer_qibla_screen.dart';
 import 'features/hydration_screen.dart';
 //import 'features/dashboard_screen.dart';
-//import 'features/meal_finder_screen.dart';
+import 'features/meal_finder_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
