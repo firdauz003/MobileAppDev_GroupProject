@@ -109,7 +109,7 @@ This application addresses the everyday challenge of balancing religious duties 
 
 ## Architecture Diagram
 
-![Architecture Diagram](WhatsApp%20Image%202026-06-19%20at%2011.38.00%20PM.jpeg)
+<img src="WhatsApp%20Image%202026-06-19%20at%2011.38.00%20PM.jpeg" alt="Architecture Diagram" width="400"/>
 
 *Figure 1: Flutter App Architecture showing the three layers - UI, Business Logic, and Data Layer*
 
@@ -117,7 +117,7 @@ This application addresses the everyday challenge of balancing religious duties 
 
 ## ERD Diagram (Firestore Data Model)
 
-![ERD Diagram](WhatsApp%20Image%202026-06-19%20at%2011.37.10%20PM.jpeg)
+<img src="WhatsApp%20Image%202026-06-19%20at%2011.37.10%20PM.jpeg" alt="ERD Diagram" width="400"/>
 
 *Figure 2: Firestore Data Model showing Users, Hydration Log, Meal Preferences, and Recipes collections*
 
@@ -125,7 +125,7 @@ This application addresses the everyday challenge of balancing religious duties 
 
 ## Flowchart (App Navigation Flow)
 
-![Flowchart](WhatsApp%20Image%202026-06-19%20at%2011.34.18%20PM.jpeg)
+<img src="WhatsApp%20Image%202026-06-19%20at%2011.34.18%20PM.jpeg" alt="Flowchart" width="400"/>
 
 *Figure 3: Mizan App Flowchart showing user authentication and navigation to main features*
 
