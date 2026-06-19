@@ -25,7 +25,7 @@
   <tr>
     <td>Abdallah Bouher</td>
     <td>2222025</td>
-    <td>Feature 5, proposal(1 to 6)</td>
+    <td>Feature 5, proposal(1 to 5)</td>
   </tr>
   <tr>
     <td>Nasution Wahyu Abdillah</td>
