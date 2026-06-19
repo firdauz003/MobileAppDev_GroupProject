@@ -30,7 +30,7 @@
   <tr>
     <td>Nasution Wahyu Abdillah</td>
     <td>2215447</td>
-    <td>Feature 4</td>
+    <td>Feature 4,proposal 6 and 7</td>
   </tr>
   <tr>
     <td>Muhammad Firdaus Bin Zaini</td>
@@ -40,7 +40,7 @@
   <tr>
     <td>Saifullah Muhammad Hafizh</td>
     <td>2225505</td>
-    <td>Feature 2</td>
+    <td>Feature 2, proposal 8 and 9</td>
   </tr>
 </table>
 
