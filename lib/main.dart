@@ -5,10 +5,23 @@ import 'features/prayer_qibla_screen.dart';
 import 'features/hydration_screen.dart';
 import 'features/dashboard_screen.dart';
 import 'features/meal_finder_screen.dart';
+import 'package:firebase_core/firebase_core.dart'; 
+import 'firebase_options.dart';                     
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const ProviderScope(child: MizanApp()));
+void main() async {
+  // 1. Ensures Flutter framework bindings are fully initialized first
+  WidgetPreview: WidgetsFlutterBinding.ensureInitialized();
+  
+  // 2. Structural Firebase Core connection boost
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(
+    const ProviderScope(
+      child: MizanApp(),
+    ),
+  );
 }
 
 class MizanApp extends StatelessWidget {
