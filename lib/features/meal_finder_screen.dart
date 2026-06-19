@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// ==========================================================================
-// FEATURE 5: "What's in my Fridge?" Meal Finder 
-// - Premium HTML Design
-// - 100% Rubric Compliant (Forms, Named Routes, Firestore)
-// ==========================================================================
-
 class MealFinderScreen extends StatefulWidget {
   const MealFinderScreen({Key? key}) : super(key: key);
 
