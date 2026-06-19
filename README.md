@@ -105,24 +105,4 @@ This application addresses the everyday challenge of balancing religious duties 
      **Firebase Authentication** for secure login.
      **Cloud Firestore** for storing recipes and user hydration logs.
 
-     6. Technical Design
-The application will be built using Flutter as the primary framework, ensuring cross‑platform compatibility for both Android and iOS.
-
-Widget Structure
-Authentication Module: Login and registration screens using TextFormField, ElevatedButton, and Firebase Authentication integration.
-
-Dashboard: A ListView with Card widgets displaying prayer times, hydration progress, and motivational quotes.
-
-Prayer Times & Qibla Compass: External packages (adhan, flutter_compass) integrated into custom widgets for accurate calculations.
-
-Hydration Tracker: Implemented as a ConsumerWidget with Riverpod providers to manage state updates in real time.
-
-Meal Finder: A form widget with checkboxes and text input, connected to Firestore queries.
-
-State Management Approach
-Riverpod was chosen for its scalability and clean architecture. It allows reactive updates across multiple modules without excessive boilerplate, and does not require BuildContext to access providers.
-
-Backend Services
-Firebase Authentication for secure login and user management.
-
-Cloud Firestore for storing recipes, hydration logs, and user profile data.
+ 
