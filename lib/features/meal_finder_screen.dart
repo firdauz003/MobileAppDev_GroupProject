@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 class MealFinderScreen extends StatefulWidget {
-  const MealFinderScreen({Key? key}) : super(key: key);
+  const MealFinderScreen({super.key});
 
   @override
   State<MealFinderScreen> createState() => _MealFinderScreenState();
@@ -350,7 +351,7 @@ class _MealFinderScreenState extends State<MealFinderScreen> {
 // RECIPE DETAIL SCREEN (Inside the same file)
 // ==========================================
 class RecipeDetailScreen extends StatelessWidget {
-  const RecipeDetailScreen({Key? key}) : super(key: key);
+  const RecipeDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -430,7 +431,7 @@ class RecipeDetailScreen extends StatelessWidget {
                           Expanded(child: Text(item, style: TextStyle(fontSize: 14, color: textMain, fontWeight: FontWeight.w600))),
                         ],
                       ),
-                    )).toList(),
+                    )),
 
                     const SizedBox(height: 20),
                     Text('PREPARATION', style: TextStyle(color: textMuted, fontWeight: FontWeight.w700, fontSize: 11, letterSpacing: 1.0)),
@@ -451,7 +452,7 @@ class RecipeDetailScreen extends StatelessWidget {
                           ],
                         ),
                       );
-                    }).toList(),
+                    }),
                   ],
                 ),
               ),
