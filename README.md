@@ -105,20 +105,28 @@ This application addresses the everyday challenge of balancing religious duties 
      **Firebase Authentication** for secure login.
      **Cloud Firestore** for storing recipes and user hydration logs.
 
-  # Mizan: Your Daily Deen & Health Companion
+# Mizan: Your Daily Deen & Health Companion
 
-## Firebase Data Model
+## Architecture Diagram
 
-![Firestore Data Model](WhatsApp%20Image%202026-06-19%20at%2011.12.52%20PM.jpeg)
+![Architecture Diagram](WhatsApp%20Image%202026-06-19%20at%2011.38.00%20PM.jpeg)
 
-*Figure 1: Firestore Data Model showing Users, Hydration Log, and Recipes collections*
+*Figure 1: Flutter App Architecture showing the three layers - UI, Business Logic, and Data Layer*
 
 ---
 
-## App Flow Diagram
+## ERD Diagram (Firestore Data Model)
 
-![App Flow Diagram](WhatsApp%20Image%202026-06-19%20at%2011.12.52%20PM%20(1).jpeg)
+![ERD Diagram](WhatsApp%20Image%202026-06-19%20at%2011.37.10%20PM.jpeg)
 
-*Figure 2: Mizan App Flow Diagram showing user authentication and navigation*
+*Figure 2: Firestore Data Model showing Users, Hydration Log, Meal Preferences, and Recipes collections*
+
+---
+
+## Flowchart (App Navigation Flow)
+
+![Flowchart](WhatsApp%20Image%202026-06-19%20at%2011.34.18%20PM.jpeg)
+
+*Figure 3: Mizan App Flowchart showing user authentication and navigation to main features*
 
  
