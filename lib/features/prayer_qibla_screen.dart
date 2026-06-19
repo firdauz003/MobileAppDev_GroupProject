@@ -1,3 +1,5 @@
+//done by: Muhammad Firdaus Bin Zaini 2217753
+
 import 'package:flutter/material.dart';
 import 'package:adhan/adhan.dart';
 import 'package:flutter_compass/flutter_compass.dart';
@@ -30,7 +32,6 @@ class _PrayerQiblaScreenState extends State<PrayerQiblaScreen> {
 
   void _calculatePrayerTimes() {
     final coordinates = Coordinates(latitude, longitude);
-    // Fixed: pass the enum value directly without the trailing parentheses
     final params = CalculationMethod.singapore.getParameters();
     params.madhab = Madhab.shafi;
     

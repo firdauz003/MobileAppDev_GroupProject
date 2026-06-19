@@ -55,11 +55,11 @@ class _UniversalNavigationHubState extends State<UniversalNavigationHub> {
 
   // 1. Array containing your working features + clear placeholder layouts for team members
   final List<Widget> _screens = [
-    const AuthProfileScreen(), // Feature 1 (Your Task)
-    const MainDashboardScreen(), // Feature 2 (Team Task)
-    const PrayerQiblaScreen(), // Feature 3 (Your Task)
-    const HydrationScreen(), // Feature 4 (Team Task)
-    const MealFinderScreen(), // Feature 5 (Team Task)
+    const AuthProfileScreen(), // Feature 1 
+    const MainDashboardScreen(), // Feature 2 
+    const PrayerQiblaScreen(), // Feature 3 
+    const HydrationScreen(), // Feature 4 
+    const MealFinderScreen(), // Feature 5 
   ];
 
   // 2. Titles displayed dynamically on the central AppBar wrapper
